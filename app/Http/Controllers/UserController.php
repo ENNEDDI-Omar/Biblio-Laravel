@@ -11,31 +11,31 @@ class UserController extends Controller
     public function index()
     {
         $users=User::all();
-        return view('admin.index');
+        return view('admin.users.index', compact('users'));
     } 
 
     public function show(User $user)
     {
-        return view('admin.show', compact('user'));
+        return view('admin.users.show', compact('user'));
     }
 
     public function create()
     {
-        return view('admin.creat');
+        return view('admin.users.create');
     }
 
     public function store(UserRequest $request)
     {  $user = $request->validated();
        $user['password'] = bcrypt($request->input('Password'));
 
-       $users = User::creat($user);
+      User::create($user);
 
-      return redirect()->route('admin.index')->with('success', 'Utilisateur créé avec succés');
+      return redirect()->route('admin.users.index')->with('success', 'Utilisateur créé avec succés!');
     }
 
     public function edit(User $user)
     {
-     return view('admin.edit', compact('user'));
+     return view('admin.users.edit', compact('user'));
     }
 
     public function update(UserRequest $request, User $user)
@@ -44,12 +44,12 @@ class UserController extends Controller
         $userData['password'] = bcrypt($request->input('Password'));
 
         $user->update($userData);
-        return redirect()->route('admin.index')->with('success', 'Utilisateur mis à jour avec succés');
+        return redirect()->route('admin.users.index')->with('success', 'Utilisateur mis à jour avec succés!');
     }
 
     public function destroy(User $user)
     {
       $user->delete();
-      return view('admin.index');
+      return view('admin.users.index');
     }
 }

@@ -1,7 +1,11 @@
 <?php
 
+use App\Http\Controllers\BookController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ResevationController;
 use App\Http\Controllers\TestController;
+use App\Http\Controllers\UserController;
+use App\Models\Reservation;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -45,6 +49,14 @@ Route::delete('/test/destroy/{test}', [TestController::class, 'destroy']);
 
 
 Route::middleware('admin')->group(function () {
-    Route::controller('/test', [TestController::class]);
+    Route::controller('admin/users', [UserController::class]);
 
+});
+
+Route::middleware('admin')->group(function () {
+    Route::controller('admin/books', [BookController::class]);
+});
+
+Route::middleware('admin')->group(function(){
+    Route::controller('admin/reservations', [ResevationController::class]);
 });

@@ -10,7 +10,7 @@ class TestController extends Controller
     public function index(){
       $tests = Test::all();
 
-      return view('test.index');
+      return view('test.index', compact('tests'));
     }
    
 
@@ -43,7 +43,7 @@ class TestController extends Controller
         return view('test.index');
     }
      
-    public function destroy( Test $test){
+    public function destroy(Test $test){
   
         $test->delete();
 
