@@ -2,7 +2,10 @@
 
 namespace Database\Factories;
 
+use App\Models\Book;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use App\Models\User;
+
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Reservation>
@@ -21,10 +24,10 @@ class ReservationFactory extends Factory
         'date_reservation' => fake()->dateTimeBetween('now', '2024-02-05'),
         'date_retour' => fake()->dateTimeBetween('now', '2024-02-25'),
         'user_id'=>function(){
-            return \app\Models\User::factory()->create()->id;
+            return User::factory()->create()->id;
         },
         'book_id' =>function(){
-            return \app\Models\Book::factory()->create()->id;
+            return Book::factory()->create()->id;
         },
         ];
     }

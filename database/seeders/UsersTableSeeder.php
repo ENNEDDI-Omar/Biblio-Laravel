@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Reservation;
+use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -13,6 +14,6 @@ class UsersTableSeeder extends Seeder
      */
     public function run(): void
     {
-        Reservation::factory(6)->create();
+        User::factory(4)->create();
     }
 }

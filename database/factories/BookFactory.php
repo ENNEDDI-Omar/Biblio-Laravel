@@ -17,8 +17,8 @@ class BookFactory extends Factory
     public function definition(): array
     {
         return [
-        'couverture' => fake()->image('public/storage/', 400, 300, null, false),
-        'titre' => fake()->title(),
+        'couverture' => fake()->image(null, 400, 300, null, false),
+        'titre' => fake()->sentence(),
         'genre' => fake()->word() ,
         'description' => fake()->paragraph(),
         'date_publication' => fake()->date(),

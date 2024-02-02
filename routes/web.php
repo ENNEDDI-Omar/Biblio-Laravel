@@ -48,9 +48,8 @@ Route::delete('/test/destroy/{test}', [TestController::class, 'destroy']);
 
 
 
-Route::middleware('admin')->group(function () {
-    Route::controller('admin/users', [UserController::class]);
-
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('admin', [UserController::class, 'index'])->name('admin.index');
 });
 
 Route::middleware('admin')->group(function () {
