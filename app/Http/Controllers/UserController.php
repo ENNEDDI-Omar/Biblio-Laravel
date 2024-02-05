@@ -15,11 +15,11 @@ class UserController extends Controller
         $users=User::all();
         $books=Book::all();
         $reservations=Reservation::all();
-        return view('admin.adminDash', compact('users' , 'books', 'reservations'));
+        return view('admin.adminDash',  compact('users' , 'books', 'reservations'));
     }
     public function users(){
-        $users=User::all();
-        return view('admin.users.index', compact('users'));
+        $us=User::all();
+        return view('admin.users.index', compact('us'));
     } 
 
     public function show(User $user)
