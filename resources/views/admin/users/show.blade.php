@@ -1,7 +1,9 @@
+
 <x-app-layout>
 
     <h1>admin->page->users->show</h1>
 
+    
     <div class="container mx-auto">
         <h1 class="text-2xl font-bold my-4">Détails de l'Utilisateur</h1>
         <div class="bg-white shadow-md rounded px-8 py-6 mb-4">
@@ -26,7 +28,7 @@
                 <p id="role_id">{{ $user->role->nom }}</p>
             </div>
             <div class="flex items-center justify-between">
-                <a href="{{ route('admin.users.index') }}" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Retour</a>
+                <a href="{{ route('users.index') }}" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Retour</a>
             </div>
         </div>
     </div>

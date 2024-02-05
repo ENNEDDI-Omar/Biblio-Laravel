@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BookController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ResevationController;
 use App\Http\Controllers\TestController;
@@ -38,7 +39,9 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::middleware(['auth', 'admin'])->group(function () {
-    Route::resource('admin', UserController::class);
+    Route::resource('admin', DashboardController::class);
+    Route::resource('users', UserController::class);
+    
     Route::resource('books', BookController::class);
     Route::resource('reservations', ResevationController::class);
 });
