@@ -14,12 +14,13 @@ class admin
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    public function handle(Request $request, Closure $next): Response
-    {
-        if (Auth::user()->role->nom == 'admin') {
-            return $next($request);
-        } else {
-            return redirect()->route('login'); // Change this line to redirect to the login route
+
+        public function handle(Request $request, Closure $next): Response
+        {
+            if (Auth::check() && Auth::user()->role->nom == 'admin') {
+                return $next($request);
+            } else {
+                return abort(404); // Redirect to the login route if not authenticated or not an admin
+            }
         }
-    }
 }

@@ -12,7 +12,7 @@ class ResevationController extends Controller
 {
     public function index()
     {   $reservations = Reservation::all();
-        return view('admin.reservations.index', compact('reservations'));
+        return view('user.home', compact('reservations'));
     }
     
     public function show(Reservation $reservId)

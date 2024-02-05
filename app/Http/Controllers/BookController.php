@@ -12,8 +12,7 @@ class BookController extends Controller
 {
     public function index()
     {   
-        $books=Book::all();
-        return view('admin.books.index');
+        return view('user.home');
     }
 
     public function show(Book $book)
@@ -29,7 +28,7 @@ class BookController extends Controller
     public function store(BookRequest $request)
     {
             if ($request->hasFile('couverture')) {
-                $imagePath = $request->file('couverture')->store('couverture', 'public');
+                $imagePath = $request->file('couverture')->store('images', 'public');
                 $request['couverture']=$imagePath;
 
                 Book::create($request->all());

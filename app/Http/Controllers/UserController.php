@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\UserRequest;
+use App\Models\Book;
+use App\Models\Reservation;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -11,7 +13,13 @@ class UserController extends Controller
     public function index()
     {
         $users=User::all();
-        return view('admin.adminDash', compact('users'));
+        $books=Book::all();
+        $reservations=Reservation::all();
+        return view('admin.adminDash', compact('users' , 'books', 'reservations'));
+    }
+    public function users(){
+        $users=User::all();
+        return view('admin.users.index', compact('users'));
     } 
 
     public function show(User $user)
